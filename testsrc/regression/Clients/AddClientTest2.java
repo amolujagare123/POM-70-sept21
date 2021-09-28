@@ -8,28 +8,14 @@ import org.testng.annotations.Test;
 import pages.Clients.AddClient;
 import pages.Login;
 import pages.Menu;
+import util.DoLogin;
 
 import java.io.IOException;
 
 import static utilities.ConfigReader.*;
 
-public class AddClientTest {
-    WebDriver driver;
+public class AddClientTest2 extends DoLogin {
 
-    @BeforeClass
-    public void doLogin() throws IOException {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get(getUrl());
-
-        Login login = new Login(driver);
-
-        login.setTxtUser(getUsername());
-        login.setTxtPass(getPassword());
-        login.clickLogin();
-
-    }
 
     @Test
     public void addClientTest() throws IOException {
@@ -38,7 +24,10 @@ public class AddClientTest {
         menu.clickAddClient();
 
         AddClient addClient = new AddClient(driver);
-        addClient.setTxtName("Ayushee");
+
+        addClient.setLanguage("Spanish");
+
+        /*addClient.setTxtName("Ayushee");
         addClient.setTxtSurname("xyz");
         addClient.setTxtAdd1("abcd1");
         addClient.setTxtAdd2("abcd2");
@@ -52,7 +41,7 @@ public class AddClientTest {
         addClient.setTxtWeb("www.xyz.com");
         addClient.setTxtVat("89899");
         addClient.setTxtTax("898989");
-        addClient.clickBtnSave();
+        addClient.clickBtnSave();*/
 
     }
 }
