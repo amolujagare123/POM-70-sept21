@@ -1,6 +1,7 @@
 package pages.Clients;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,7 +23,7 @@ public class AddClient {
     WebElement searchBox;
 
     WebDriver driver;
-
+    //li[normalize-space()='English']
     public void setLanguage(String language)
     {
         containerlanguage.click();
@@ -31,6 +32,34 @@ public class AddClient {
     }
 
 
+    @FindBy (id = "select2-client_country-container")
+    WebElement containerCountry;
+
+
+    public void setCountry(String country)
+    {
+        containerCountry.click();
+        searchBox.sendKeys(country);
+        driver.findElement(By.xpath("//li[normalize-space()='"+country+"']")).click();
+    }
+
+    @FindBy (id="select2-client_gender-container")
+    WebElement containerGender;
+
+    public void setGender(String gender)
+    {
+        containerGender.click();
+        driver.findElement(By.xpath("//li[normalize-space()='"+gender+"']")).click();
+    }
+
+    @FindBy(xpath = "//input[@id='client_birthdate']")
+    WebElement txtBirthdate;
+
+    public void setBirthdate(String bdate)
+    {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].setAttribute('value','"+bdate+"')",txtBirthdate);
+    }
 
     @FindBy(xpath = "//input[@id='client_name']")
     WebElement txtName;
