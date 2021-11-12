@@ -128,9 +128,9 @@ public class AddClient {
     @FindBy(xpath = "//input[@id='client_fax']")
     WebElement txtFax;
 
-    public  void setTxtFax(String phone )
+    public  void setTxtFax(String fax )
     {
-        txtPhone.sendKeys(phone);
+        txtFax.sendKeys(fax);
     }
 
 
